@@ -1,0 +1,11 @@
+UserId,Email,Passwords,FirstName,LastName,PhoneNumber,Age,CreatedTime,LastUpdatedTime
+1,john.doe@example.com,pass1234,John,Doe,1 555-123-4567,32,2023-06-07 9:00:00,2023-06-07 9:00:00
+2,jane.smith@example.com,password,Jane,Smith,1 555-987-6543,28,2023-06-07 10:30:00,2023-06-07 10:30:00
+3,michael.johnson@example.com,secret,Michael,Johnson,1 555-345-6789,45,2023-06-07 11:45:00,2023-06-07 11:45:00
+4,sarah.adams@example.com,mypass123,Sarah,Adams,1 555-876-5432,37,2023-06-07 12:15:00,2023-06-07 12:15:00
+5,david.wilson@example.com,securepass,David,Wilson,1 555-234-5678,29,2023-06-07 13:00:00,2023-06-07 13:00:00
+6,emily.brown@example.com,passw0rd,Emily,Brown,1 555-765-4321,41,2023-06-07 14:30:00,2023-06-07 14:30:00
+7,andrew.taylor@example.com,12345678,Andrew,Taylor,1 555-432-1098,24,2023-06-07 15:45:00,2023-06-07 15:45:00
+8,olivia.thomas@example.com,olivia123,Olivia,Thomas,1 555-890-1234,33,2023-06-07 16:20:00,2023-06-07 16:20:00
+9,daniel.white@example.com,secure123,Daniel,White,1 555-321-0987,36,2023-06-07 17:10:00,2023-06-07 17:10:00
+10,ava.anderson@example.com,a1b2c3d4,Ava,Anderson,1 555-456-7890,30,2023-06-07 18:00:00,2023-06-07 18:00:00
