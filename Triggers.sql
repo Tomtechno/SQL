@@ -1,5 +1,6 @@
 use exchange;
 
+
 -- Se activa después de una inserción en la tabla Transaction.
 -- Recupera el monto y el saldo de la billetera de destino de la transacción. Actualiza
 -- la tabla Account agregando el monto de la transacción al saldo de la cuenta del usuario.
@@ -25,7 +26,8 @@ BEGIN
     SET Balance = balance + amount
     WHERE WalletId = NEW.DestinationWalletId;
 END //
-DELIMITER ,
+DELIMITER ;
+
 
 -- Se activa antes de una actualización en la tabla Account.
 -- Recupera el saldo mínimo permitido para la cuenta, que se calcula como 0.1 veces el precio
@@ -49,7 +51,8 @@ BEGIN
             SET MESSAGE_TEXT = 'No se llego al valor minimo de la cuenta';
     END IF;
 END //
-DELIMITER ,
+DELIMITER ;
+
 
 -- Incremento el contador de copias de seguridad para el usuario en la tabla `UserBackupCount`.
 -- Compruebo si el usuario ha alcanzado un umbral específico de contador de copias de seguridad.
