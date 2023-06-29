@@ -54,9 +54,9 @@ END //
 DELIMITER ;
 
 
--- Incremento el contador de copias de seguridad para el usuario en la tabla `UserBackupCount`.
--- Compruebo si el usuario ha alcanzado un umbral específico de contador de copias de seguridad.
--- Envio una notificación al usuario si el contador de copias de seguridad.
+-- Incrementa el contador de copias de seguridad para el usuario en la tabla `UserBackupCount`.
+-- Comprueba si el usuario ha alcanzado un umbral específico de contador de copias de seguridad.
+-- Envia una notificación al usuario si el contador de copias de seguridad.
 DELIMITER //
 CREATE TRIGGER CreatePasswordBackup
 AFTER UPDATE ON User
@@ -82,4 +82,24 @@ BEGIN
         END IF;
     END IF;
 END //
+DELIMITER ;
+
+-- Almacena las operaciones de Insert y Delete realizadas en la tabla `User`.
+DROP TRIGGER if  exists TRG_LOG_AUDITORIA ;
+DELIMITER //
+CREATE TRIGGER TRG_LOG_AUDITORIA AFTER INSERT ON exchange.user, BEFORE DELETE ON exchange.user
+FOR EACH ROW
+BEGIN
+  IF EXISTS (SELECT * FROM inserted)
+	  BEGIN
+		INSERT INTO LOG_AUDITORIA (CAMPONUEVO_CAMPOANTERIOR, NOMBRE_DE_ACCION, NOMBRE_TABLA, USUARIO, FECHA_UPD_INS_DEL)
+		VALUES (NEW.FirstName, NEW.LastName, NEW.Email, 'INSERT', 'user', CURRENT_USER(), NOW());
+	  END
+	  ELSE
+	  BEGIN
+		INSERT INTO LOG_AUDITORIA (CAMPONUEVO_CAMPOANTERIOR, NOMBRE_DE_ACCION, NOMBRE_TABLA, USUARIO, FECHA_UPD_INS_DEL)
+		VALUES (NEW.FirstName, NEW.LastName, NEW.Email, 'DELETE', 'user', CURRENT_USER(), NOW());
+	  END
+  END IF
+END 
 DELIMITER ;

@@ -17,9 +17,8 @@ WHERE
   RETURN total_balance;
 END $$
 DELIMITER ;
-SELECT UserId, CalculateTotalWalletBalance(UserId) AS TotalBalance
-FROM User;
-
+-- SELECT UserId, CalculateTotalWalletBalance(UserId) AS TotalBalance
+-- FROM User;
 
 -- Calcula el monto total de las transacciones para un userId dado. Solo considera las transacciones que superan
 -- el valor umbral denominado threshhold
@@ -42,5 +41,22 @@ BEGIN
     END IF;
 END $$
 DELIMITER ;
-SELECT User.FirstName, User.LastName, CalculateUserSpent(User.UserId, 150) AS Spent
-FROM User;
+-- SELECT User.FirstName, User.LastName, CalculateUserSpent(User.UserId, 150) AS Spent
+-- FROM User;
+
+-- Indica si los parámetros utilzados estan siendo utilizados de forma correcta
+DROP FUNCTION  IF EXISTS fn_p_mensaje ;
+DELIMITER //
+CREATE FUNCTION fn_p_mensaje ( p_columna varchar(255) )
+RETURNS varchar(255)
+DETERMINISTIC
+BEGIN
+   DECLARE v_mensaje VARCHAR(255);
+   IF p_columna  = ''  OR p_columna  IS NULL THEN
+      SET v_mensaje = 'ERROR';     
+   ELSE
+      SET v_mensaje = 'OK';
+   END IF;
+   RETURN v_mensaje;
+END; //
+DELIMITER ;
