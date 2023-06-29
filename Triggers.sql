@@ -1,5 +1,4 @@
-use exchange;
-
+USE exchange;
 
 -- Se activa después de una inserción en la tabla Transaction.
 -- Recupera el monto y el saldo de la billetera de destino de la transacción. Actualiza

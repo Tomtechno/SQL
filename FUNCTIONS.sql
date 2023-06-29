@@ -1,7 +1,7 @@
 USE exchange;
 
 -- Calcula el balance total de las billeteras dado un user_id
-DROP FUNCTION IF EXISTS CalculateTotalWalletBalance;
+DROP FUNCTION IF EXISTS fn_CalculateTotalWalletBalance;
 DELIMITER $$
 CREATE FUNCTION CalculateTotalWalletBalance(user_id INT)
 RETURNS DECIMAL
@@ -22,7 +22,7 @@ DELIMITER ;
 
 -- Calcula el monto total de las transacciones para un userId dado. Solo considera las transacciones que superan
 -- el valor umbral denominado threshhold
-DROP FUNCTION IF EXISTS CalculateUserSpent;
+DROP FUNCTION IF EXISTS fn_CalculateUserSpent;
 DELIMITER $$
 CREATE FUNCTION CalculateUserSpent(userId INT, threshold DECIMAL)
 RETURNS DECIMAL(10, 2)
